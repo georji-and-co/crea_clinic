@@ -3,26 +3,27 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<meta name="description" content="埼玉県川越市・川越駅徒歩5分のクレア歯科。予防歯科から矯正・インプラントまで。完全予約制で、痛みに配慮した丁寧な診療をご家族で。">
-<title>クレア歯科｜川越駅徒歩5分（埼玉県川越市）</title>
+<meta name="description" content="埼玉県川越市・川越駅徒歩5分のクレア歯科。地域密着で丁寧なカウンセリングと痛みに配慮した治療。小さなお子様からご高齢の方まで安心してご通院いただけます。">
+<title>クレア歯科｜川越の地域密着・歯科医院（川越駅徒歩5分）</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://images.unsplash.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Shippori+Mincho:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
-    --bg: #faf6f0;
-    --bg-dark: #1a1816;
+    --bg: #f4faf7;
+    --bg-warm: #fff9f4;
+    --bg-dark: #2f4f42;
     --surface: #ffffff;
-    --text: #1c1917;
-    --text-soft: #5c5650;
-    --accent: #c4694e;
-    --accent-light: #e8a07a;
-    --accent-glow: rgba(196, 105, 78, 0.14);
-    --line: rgba(28, 25, 23, 0.1);
-    --mincho: 'Shippori Mincho', serif;
-    --sans: 'Noto Sans JP', sans-serif;
+    --text: #2a3832;
+    --text-soft: #5a6b64;
+    --accent: #4d9b73;
+    --accent-light: #6db892;
+    --accent-warm: #f0c9a8;
+    --accent-glow: rgba(77, 155, 115, 0.16);
+    --line: rgba(42, 56, 50, 0.1);
+    --sans: 'M PLUS Rounded 1c', 'Hiragino Maru Gothic ProN', 'Yu Gothic UI', sans-serif;
     --hours-h: 44px;
     --nav-h: 60px;
     --header: calc(var(--hours-h) + var(--nav-h));
@@ -50,19 +51,21 @@
     top: 0; left: 0; right: 0;
     z-index: 300;
     height: var(--hours-h);
-    background: var(--bg-dark);
-    color: #eceae7;
+    background: #3a5f50;
+    color: #f0f7f3;
     font-size: 11px;
     display: flex;
     align-items: center;
     border-bottom: 1px solid rgba(255,255,255,0.06);
   }
   .status-bar__inner {
-    width: var(--wrap);
+    width: 100%;
+    max-width: var(--wrap);
     margin: 0 auto;
-    padding: 0 0.25rem;
+    padding: 0 1.25rem;
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 0.75rem 1.25rem;
     min-width: 0;
   }
@@ -122,6 +125,10 @@
     white-space: nowrap;
   }
   .status-bar__tel:hover { color: #fff; }
+  @media (max-width: 900px) {
+    .status-bar__inner { justify-content: flex-start; }
+    .notice { text-align: left; }
+  }
   @media (max-width: 640px) {
     .status-bar__tel { display: none; }
     .status-bar__detail { font-size: 10px; }
@@ -139,18 +146,29 @@
     justify-content: center;
     transition: background 0.4s, box-shadow 0.4s;
   }
-  .nav.is-solid {
-    background: rgba(250, 246, 240, 0.94);
+  .nav.is-solid,
+  .nav.nav--hero {
+    background: rgba(255, 255, 255, 0.94);
     backdrop-filter: blur(16px);
     box-shadow: 0 1px 0 var(--line);
   }
+  .nav.nav--hero .nav__logo,
+  .nav.nav--hero .nav__links a,
+  .nav.is-solid .nav__logo,
+  .nav.is-solid .nav__links a { color: var(--text-soft); }
+  .nav.nav--hero .nav__logo,
+  .nav.is-solid .nav__logo { color: var(--text); }
   .nav.is-dark {
-    background: rgba(26, 24, 22, 0.88);
+    background: rgba(255, 255, 255, 0.94);
     backdrop-filter: blur(16px);
+    box-shadow: 0 1px 0 var(--line);
   }
   .nav.is-dark .nav__logo,
-  .nav.is-dark .nav__links a { color: #faf6f0; }
-  .nav.is-dark .nav__cta { background: var(--accent-light); color: #fff; }
+  .nav.is-dark .nav__links a { color: var(--text-soft); }
+  .nav.is-dark .nav__logo { color: var(--text); }
+  .nav.is-dark .nav__cta,
+  .nav.nav--hero .nav__cta,
+  .nav.is-solid .nav__cta { background: var(--accent); color: #fff; }
   .nav__inner {
     width: var(--wrap);
     display: flex;
@@ -158,7 +176,7 @@
     justify-content: space-between;
   }
   .nav__logo {
-    font-family: var(--mincho);
+    font-family: var(--sans);
     font-size: 15px;
     font-weight: 500;
     text-decoration: none;
@@ -186,8 +204,9 @@
   }
   .nav__links a:hover { color: var(--accent); }
   .nav__cta {
-    background: var(--text);
+    background: var(--accent);
     color: #fff;
+    border-radius: 999px;
     padding: 0.55rem 1.1rem;
     font-size: 12px;
     font-weight: 500;
@@ -219,17 +238,20 @@
   .nav.is-open .nav__burger span:nth-child(3) { bottom: 50%; transform: translateY(50%) rotate(-45deg); }
 
   .notice {
-    background: linear-gradient(90deg, #fff8f0 0%, #fff 100%);
+    width: 100%;
+    background: #eef8f1;
     border-bottom: 1px solid var(--line);
     padding: 0.85rem 0;
     font-size: 12px;
     color: var(--text-soft);
     line-height: 1.7;
+    text-align: center;
   }
   .notice__inner {
-    width: var(--wrap);
+    width: 100%;
+    max-width: 52rem;
     margin: 0 auto;
-    padding: 0 0.25rem;
+    padding: 0 1.25rem;
   }
   .notice strong { color: var(--accent); font-weight: 600; }
 
@@ -237,17 +259,19 @@
     position: relative;
     min-height: calc(100vh - var(--header));
     min-height: calc(100dvh - var(--header));
-    display: grid;
-    align-items: end;
-    color: #fff;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    color: var(--text);
     overflow: hidden;
+    background: var(--bg-warm);
   }
   .hero__media { position: absolute; inset: 0; }
   .hero__media img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center 35%;
+    object-position: center 30%;
     transform: scale(1.05);
     transition: transform 8s var(--ease);
   }
@@ -256,59 +280,82 @@
     content: '';
     position: absolute;
     inset: 0;
-    background:
-      linear-gradient(0deg, rgba(26,24,22,0.92) 0%, rgba(26,24,22,0.35) 45%, rgba(26,24,22,0.55) 100%),
-      linear-gradient(90deg, rgba(26,24,22,0.65) 0%, transparent 55%);
+    background: linear-gradient(
+      to top,
+      rgba(255, 252, 248, 0.97) 0%,
+      rgba(255, 252, 248, 0.82) 40%,
+      rgba(244, 250, 247, 0.45) 70%,
+      rgba(244, 250, 247, 0.12) 100%
+    );
   }
   .hero__content {
     position: relative;
     z-index: 2;
-    width: var(--wrap);
+    width: 100%;
+    max-width: 44rem;
     margin: 0 auto;
-    padding: 3rem 0 4.5rem;
+    padding: 2.5rem 1.25rem 3.5rem;
+    box-sizing: border-box;
   }
   .hero__badge {
     display: inline-flex;
     align-items: center;
-    gap: 0.5rem;
-    background: rgba(196, 105, 78, 0.35);
-    border: 1px solid rgba(232, 160, 122, 0.5);
-    padding: 0.4rem 0.9rem;
-    font-size: 11px;
-    font-weight: 500;
-    margin-bottom: 1.5rem;
-    backdrop-filter: blur(8px);
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.45rem 0.65rem;
+    background: rgba(255, 255, 255, 0.94);
+    border: 1px solid rgba(77, 155, 115, 0.32);
+    padding: 0.55rem 1.15rem;
+    font-size: clamp(12px, 2.8vw, 15px);
+    font-weight: 700;
+    line-height: 1.45;
+    letter-spacing: 0.04em;
+    color: #2a6b4a;
+    margin-bottom: 1.35rem;
+    border-radius: 999px;
+    box-shadow: 0 4px 20px rgba(77, 155, 115, 0.12);
   }
   .hero__badge::before {
     content: '';
-    width: 6px; height: 6px;
+    width: 7px; height: 7px;
     border-radius: 50%;
-    background: #fcd9b6;
-    box-shadow: 0 0 12px #fcd9b6;
+    background: var(--accent);
+    box-shadow: 0 0 8px rgba(77, 155, 115, 0.55);
+    flex-shrink: 0;
   }
   .hero__title {
-    font-family: var(--mincho);
-    font-size: clamp(2rem, 5vw, 3.5rem);
-    font-weight: 500;
-    line-height: 1.45;
-    letter-spacing: 0.02em;
-    max-width: 16em;
-    margin-bottom: 1.25rem;
+    font-family: var(--sans);
+    margin-bottom: 1.1rem;
   }
-  .hero__title br { display: none; }
-  @media (min-width: 768px) {
-    .hero__title br { display: block; }
-    .hero__title { max-width: none; }
+  .hero__title-lead {
+    display: block;
+    font-size: clamp(1.2rem, 3.2vw, 1.55rem);
+    font-weight: 700;
+    line-height: 1.65;
+    letter-spacing: 0.03em;
+    color: var(--text);
+  }
+  .hero__title-clinic {
+    display: block;
+    margin-top: 0.55em;
+    font-size: clamp(2.25rem, 7.2vw, 4rem);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: 0.14em;
+    color: #1a5639;
+    text-shadow:
+      0 0 32px rgba(255, 255, 255, 1),
+      0 0 64px rgba(255, 255, 255, 0.85),
+      0 2px 4px rgba(26, 86, 57, 0.12);
   }
   .hero__lead {
-    font-size: clamp(14px, 2vw, 16px);
-    max-width: 38em;
-    line-height: 2;
-    opacity: 0.9;
-    margin-bottom: 2rem;
-    font-weight: 400;
+    font-size: clamp(14px, 3.6vw, 17px);
+    max-width: 36em;
+    line-height: 1.95;
+    margin-bottom: 1.75rem;
+    font-weight: 500;
+    color: var(--text-soft);
   }
-  .hero__lead strong { color: #fcd9b6; font-weight: 500; }
   .hero__actions {
     display: flex;
     flex-wrap: wrap;
@@ -327,65 +374,128 @@
     transition: transform 0.2s, background 0.2s;
   }
   .btn:active { transform: scale(0.98); }
-  .btn--fill { background: var(--accent-light); color: #fff; }
-  .btn--fill:hover { background: #f0b88a; }
-  .btn--line {
-    border: 1px solid rgba(255,255,255,0.45);
+  .btn--fill {
+    background: var(--accent);
     color: #fff;
+    border-radius: 999px;
+    box-shadow: 0 6px 20px rgba(77, 155, 115, 0.28);
   }
-  .btn--line:hover { background: rgba(255,255,255,0.08); }
+  .btn--fill:hover { background: var(--accent-light); }
+  .btn--line {
+    border: 1.5px solid rgba(77, 155, 115, 0.45);
+    color: var(--accent);
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: 999px;
+  }
+  .btn--line:hover { background: #fff; }
   .hero__stats {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 2rem 3rem;
-    padding-top: 1.75rem;
-    border-top: 1px solid rgba(255,255,255,0.15);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.65rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid rgba(77, 155, 115, 0.18);
+  }
+  .hero__stat {
+    background: rgba(255, 255, 255, 0.88);
+    border: 1px solid rgba(77, 155, 115, 0.15);
+    border-radius: 12px;
+    padding: 0.85rem 0.65rem;
+    text-align: center;
   }
   .hero__stat strong {
     display: block;
-    font-family: var(--mincho);
-    font-size: clamp(1.75rem, 4vw, 2.5rem);
-    font-weight: 500;
-    line-height: 1.1;
-    color: #fff;
+    font-family: var(--sans);
+    font-size: clamp(1.1rem, 3.5vw, 1.5rem);
+    font-weight: 800;
+    line-height: 1.2;
+    color: var(--accent);
   }
   .hero__stat span {
-    font-size: 12px;
-    opacity: 0.65;
+    font-size: 10px;
+    color: var(--text-soft);
     display: block;
-    margin-top: 0.25rem;
+    margin-top: 0.3rem;
+    line-height: 1.4;
   }
 
-  .statement {
-    padding: clamp(4rem, 10vw, 7rem) 0;
-    background: var(--surface);
+  .intro {
+    padding: clamp(3rem, 8vw, 5rem) 0;
+    background: linear-gradient(180deg, var(--surface) 0%, var(--bg) 100%);
   }
-  .statement__inner {
+  .intro__inner {
     width: var(--wrap);
     margin: 0 auto;
-    display: grid;
-    grid-template-columns: 0.9fr 1.1fr;
-    gap: clamp(2rem, 6vw, 5rem);
-    align-items: center;
+    padding: 0 0.25rem;
+    max-width: 46rem;
   }
-  .statement__label {
+  .intro__card {
+    background: var(--surface);
+    border: 1px solid rgba(77, 155, 115, 0.16);
+    border-radius: 20px;
+    padding: clamp(1.75rem, 5vw, 2.5rem);
+    box-shadow: 0 12px 40px rgba(77, 155, 115, 0.08);
+    position: relative;
+    overflow: hidden;
+  }
+  .intro__card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--accent-light), var(--accent-warm));
+  }
+  .intro__label {
+    display: inline-block;
     font-size: 12px;
+    font-weight: 700;
     color: var(--accent);
-    font-weight: 500;
+    letter-spacing: 0.12em;
     margin-bottom: 1rem;
+    padding: 0.35rem 0.85rem;
+    background: var(--accent-glow);
+    border-radius: 999px;
   }
-  .statement__title {
-    font-family: var(--mincho);
-    font-size: clamp(1.5rem, 3.5vw, 2.25rem);
-    line-height: 1.55;
+  .intro__text {
+    font-size: clamp(15px, 3.8vw, 17px);
+    line-height: 2;
+    color: var(--text-soft);
     font-weight: 500;
   }
-  .statement__title br { display: none; }
-  @media (min-width: 768px) {
-    .statement__title br { display: block; }
+  .intro__text em {
+    font-style: normal;
+    color: var(--accent);
+    font-weight: 700;
   }
-  .statement__body { font-size: 15px; color: var(--text-soft); }
-  .statement__body p + p { margin-top: 1.25em; }
+
+  @media (min-width: 901px) {
+    .status-bar__detail {
+      flex: 0 1 auto;
+      text-align: center;
+      white-space: normal;
+      max-width: 36em;
+    }
+    .hero__content {
+      text-align: center;
+      padding-bottom: 4.5rem;
+    }
+    .hero__badge { margin-left: auto; margin-right: auto; }
+    .hero__actions { justify-content: center; }
+    .hero__stats {
+      max-width: 34rem;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+
+  @media (max-width: 520px) {
+    .hero__content { padding-bottom: 2.75rem; max-width: none; }
+    .hero__title-lead { font-size: clamp(1.1rem, 4.2vw, 1.35rem); }
+    .hero__title-clinic { font-size: clamp(2rem, 8.5vw, 2.65rem); letter-spacing: 0.1em; }
+    .hero__stats { grid-template-columns: 1fr; gap: 0.5rem; }
+    .hero__stat { display: flex; align-items: center; justify-content: space-between; text-align: left; gap: 0.75rem; }
+    .hero__stat strong { font-size: 1.05rem; }
+    .hero__stat span { margin-top: 0; flex: 1; text-align: right; }
+  }
 
   .compare {
     background: var(--bg-dark);
@@ -399,7 +509,7 @@
     padding: 0 0.25rem;
   }
   .compare__head h2 {
-    font-family: var(--mincho);
+    font-family: var(--sans);
     font-size: clamp(1.75rem, 4vw, 2.5rem);
     font-weight: 500;
     margin-bottom: 0.75rem;
@@ -446,7 +556,7 @@
     margin-bottom: 0.5rem;
   }
   .compare__caption h3 {
-    font-family: var(--mincho);
+    font-family: var(--sans);
     font-size: 1.35rem;
     font-weight: 500;
     margin-bottom: 0.5rem;
@@ -469,7 +579,7 @@
     padding: 0 0.25rem;
   }
   .story__head h2 {
-    font-family: var(--mincho);
+    font-family: var(--sans);
     font-size: clamp(1.75rem, 4vw, 2.35rem);
     font-weight: 500;
     margin-bottom: 0.5rem;
@@ -498,14 +608,14 @@
   .story-card__img img { width: 100%; height: 100%; object-fit: cover; }
   .story-card__body { padding: 1.5rem; flex: 1; }
   .story-card__num {
-    font-family: var(--mincho);
+    font-family: var(--sans);
     font-size: 2.5rem;
     color: rgba(196, 105, 78, 0.22);
     line-height: 1;
     margin-bottom: 0.5rem;
   }
   .story-card h3 {
-    font-family: var(--mincho);
+    font-family: var(--sans);
     font-size: 1.15rem;
     font-weight: 500;
     margin-bottom: 0.5rem;
@@ -533,7 +643,7 @@
     justify-content: center;
   }
   .feature-split__content h2 {
-    font-family: var(--mincho);
+    font-family: var(--sans);
     font-size: clamp(1.5rem, 3vw, 2rem);
     font-weight: 500;
     line-height: 1.5;
@@ -561,7 +671,7 @@
   .pillars__inner { width: var(--wrap); margin: 0 auto; padding: 0 0.25rem; }
   .pillars__head { margin-bottom: 2rem; max-width: 40em; }
   .pillars__head h2 {
-    font-family: var(--mincho);
+    font-family: var(--sans);
     font-size: clamp(1.5rem, 3vw, 2rem);
     font-weight: 500;
     margin-bottom: 0.5rem;
@@ -578,7 +688,7 @@
     border: 1px solid var(--line);
   }
   .pillar-card h3 {
-    font-family: var(--mincho);
+    font-family: var(--sans);
     font-size: 1.05rem;
     font-weight: 500;
     margin-bottom: 0.65rem;
@@ -607,7 +717,7 @@
     justify-content: center;
   }
   .clinic-strip__text h2 {
-    font-family: var(--mincho);
+    font-family: var(--sans);
     font-size: 1.5rem;
     font-weight: 500;
     margin-bottom: 1rem;
@@ -620,7 +730,7 @@
   }
   .gallery__inner { width: var(--wrap); margin: 0 auto; padding: 0 0.25rem; }
   .gallery__title {
-    font-family: var(--mincho);
+    font-family: var(--sans);
     font-size: 1.5rem;
     margin-bottom: 1.5rem;
     font-weight: 500;
@@ -704,7 +814,7 @@
   }
   .doctor__label { font-size: 12px; color: var(--accent); font-weight: 500; margin-bottom: 0.5rem; }
   .doctor__name {
-    font-family: var(--mincho);
+    font-family: var(--sans);
     font-size: clamp(1.75rem, 3vw, 2.25rem);
     font-weight: 500;
     margin-bottom: 0.25rem;
@@ -745,7 +855,7 @@
     max-width: 36em;
   }
   .services-secondary__head h2 {
-    font-family: var(--mincho);
+    font-family: var(--sans);
     font-size: 1.35rem;
     font-weight: 500;
     margin-bottom: 0.5rem;
@@ -776,7 +886,7 @@
     gap: 3rem;
   }
   .access h2 {
-    font-family: var(--mincho);
+    font-family: var(--sans);
     font-size: 1.75rem;
     font-weight: 500;
     margin-bottom: 1.5rem;
@@ -811,7 +921,7 @@
   .access-info dt { font-size: 12px; color: var(--text-soft); }
   .access-info dd { margin: 0; }
   .access-info .tel {
-    font-family: var(--mincho);
+    font-family: var(--sans);
     font-size: 1.5rem;
     color: var(--text);
   }
@@ -842,7 +952,7 @@
   }
   .cta__inner { width: var(--wrap); margin: 0 auto; padding: 0 0.25rem; }
   .cta h2 {
-    font-family: var(--mincho);
+    font-family: var(--sans);
     font-size: clamp(1.35rem, 3vw, 1.85rem);
     font-weight: 500;
     margin-bottom: 0.5rem;
@@ -918,7 +1028,6 @@
   .reveal.is-visible { opacity: 1; transform: none; }
 
   @media (max-width: 900px) {
-    .statement__inner,
     .doctor__inner,
     .access__inner,
     .feature-split,
@@ -1027,6 +1136,7 @@
       <span></span><span></span><span></span>
     </button>
     <nav class="nav__links">
+      <a href="#intro">ごあいさつ</a>
       <a href="#services">診療内容</a>
       <a href="#care">こだわり</a>
       <a href="#doctor">院長</a>
@@ -1042,7 +1152,7 @@
   </div>
 </div>
 
-<section class="hero" id="top">
+<section class="hero hero--light" id="top">
   <div class="hero__media">
     <img
       src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=2000&q=80"
@@ -1054,12 +1164,15 @@
   </div>
   <div class="hero__content">
     <p class="hero__badge">川越駅 徒歩5分 · 完全予約制 · 駐車場2台</p>
-    <h1 class="hero__title">信頼でつながる、<br>あなたの歯科医院。</h1>
+    <h1 class="hero__title">
+      <span class="hero__title-lead">地域の皆様の笑顔を守る、一番身近な歯医者さん。</span>
+      <span class="hero__title-clinic">クレア歯科</span>
+    </h1>
     <p class="hero__lead">
-      予防歯科から矯正・インプラントまで幅広く対応する、相談しやすいアットホームな歯科医院です。<strong>患者さまとのコミュニケーションを重視</strong>し、一人ひとりのゴールに合わせた治療をご提案します。
+      丁寧なカウンセリングと痛みに配慮した治療で、小さなお子様からご高齢の方まで安心して通えるクリニックです。
     </p>
     <div class="hero__actions">
-      <a href="#care" class="btn btn--fill">当院のこだわり</a>
+      <a href="#intro" class="btn btn--fill">はじめての方へ</a>
       <a href="#access" class="btn btn--line">診療時間・ご予約</a>
     </div>
     <div class="hero__stats">
@@ -1079,21 +1192,12 @@
   </div>
 </section>
 
-<section class="statement reveal" id="philosophy">
-  <div class="statement__inner">
-    <div>
-      <p class="statement__label">治療方針</p>
-      <h2 class="statement__title">
-        お口の「今」と<br>
-        目指す「未来」に寄り添う。
-      </h2>
-    </div>
-    <div class="statement__body">
-      <p>
-        一言に「お口の治療」と言っても、症状やご要望は人それぞれです。当院では患者さまのゴールを理解し、できるだけ情報を共有しながら治療計画を練っています。
-      </p>
-      <p>
-        診療のモットーは<strong>「信頼関係を大切に、歯科医療に取り組むこと」</strong>。お互いが頑張るからこそ治療は成功する——そう考え、丁寧な説明と寄り添う対応を心がけています。
+<section class="intro reveal" id="intro">
+  <div class="intro__inner">
+    <div class="intro__card">
+      <p class="intro__label">ごあいさつ</p>
+      <p class="intro__text">
+        クレア歯科のホームページをご覧いただき、ありがとうございます。当院では、お一人おひとりの患者様との対話を大切にし、今どのような治療が必要なのかを分かりやすく丁寧にご説明いたします。川越の皆様に<em>「ここに相談して良かった」</em>と思っていただけるよう、アットホームで質の高い歯科医療をお届けします。
       </p>
     </div>
   </div>
@@ -1533,8 +1637,9 @@
     const heroBottom = hero.offsetTop + hero.offsetHeight;
     const y = window.scrollY;
     const inHero = y < heroBottom - nav.offsetHeight - 20;
-    nav.classList.toggle('is-dark', inHero);
-    nav.classList.toggle('is-solid', !inHero);
+    const lightHero = hero.classList.contains('hero--light');
+    nav.classList.toggle('is-dark', inHero && !lightHero);
+    nav.classList.toggle('is-solid', !inHero || lightHero);
     nav.classList.toggle('nav--hero', inHero);
   }
   updateNav();
