@@ -164,9 +164,9 @@
     box-shadow: 0 1px 0 var(--line);
   }
   .nav.nav--hero .nav__logo,
-  .nav.nav--hero .nav__links a,
+  .nav.nav--hero .nav__links a:not(.nav__cta),
   .nav.is-solid .nav__logo,
-  .nav.is-solid .nav__links a { color: var(--text-soft); }
+  .nav.is-solid .nav__links a:not(.nav__cta) { color: var(--text-soft); }
   .nav.nav--hero .nav__logo,
   .nav.is-solid .nav__logo { color: var(--text); }
   .nav.is-dark {
@@ -175,11 +175,8 @@
     box-shadow: 0 1px 0 var(--line);
   }
   .nav.is-dark .nav__logo,
-  .nav.is-dark .nav__links a { color: var(--text-soft); }
+  .nav.is-dark .nav__links a:not(.nav__cta) { color: var(--text-soft); }
   .nav.is-dark .nav__logo { color: var(--text); }
-  .nav.is-dark .nav__cta,
-  .nav.nav--hero .nav__cta,
-  .nav.is-solid .nav__cta { background: var(--accent); color: #fff; }
   .nav__inner {
     width: var(--wrap);
     display: flex;
@@ -207,24 +204,29 @@
     align-items: center;
     gap: 1.75rem;
   }
-  .nav__links a {
+  .nav__links a:not(.nav__cta) {
     font-size: 13px;
     text-decoration: none;
     color: var(--text-soft);
     transition: color 0.2s;
   }
-  .nav__links a:hover { color: var(--accent); }
-  .nav__cta {
-    background: var(--accent);
+  .nav__links a:not(.nav__cta):hover { color: var(--accent); }
+  .nav__links a.nav__cta {
+    background: #1a5639;
     color: #fff;
     border-radius: 999px;
-    padding: 0.55rem 1.1rem;
-    font-size: 12px;
-    font-weight: 500;
+    padding: 0.6rem 1.2rem;
+    font-size: 13px;
+    font-weight: 700;
     text-decoration: none;
-    transition: background 0.25s;
+    letter-spacing: 0.04em;
+    box-shadow: 0 4px 14px rgba(26, 86, 57, 0.28);
+    transition: background 0.25s, transform 0.2s;
   }
-  .nav__cta:hover { background: var(--accent); }
+  .nav__links a.nav__cta:hover {
+    background: #2a6b4a;
+    color: #fff;
+  }
   .nav__burger {
     display: none;
     background: none;
@@ -247,6 +249,8 @@
   .nav.is-open .nav__burger span:nth-child(1) { top: 50%; transform: translateY(-50%) rotate(45deg); }
   .nav.is-open .nav__burger span:nth-child(2) { opacity: 0; }
   .nav.is-open .nav__burger span:nth-child(3) { bottom: 50%; transform: translateY(50%) rotate(-45deg); }
+
+  .nav-backdrop { display: none; }
 
   .notice {
     width: 100%;
@@ -404,7 +408,10 @@
     line-height: 1.95;
     margin-bottom: 1.75rem;
     font-weight: 500;
-    color: var(--text-soft);
+    color: #334841;
+    text-shadow:
+      0 1px 0 rgba(255, 255, 255, 0.75),
+      0 2px 10px rgba(255, 255, 255, 0.35);
   }
   .hero__actions {
     display: flex;
@@ -554,71 +561,149 @@
   }
   .compare__head {
     width: var(--wrap);
-    margin: 0 auto 3rem;
+    margin: 0 auto 2.5rem;
     text-align: center;
     padding: 0 0.25rem;
   }
   .compare__head h2 {
     font-family: var(--sans);
     font-size: clamp(1.75rem, 4vw, 2.5rem);
-    font-weight: 500;
+    font-weight: 700;
     margin-bottom: 0.75rem;
+    line-height: 1.45;
   }
-  .compare__head p { color: rgba(255,255,255,0.55); font-size: 14px; }
-  .compare__grid {
+  .compare__head p {
+    color: rgba(255, 255, 255, 0.78);
+    font-size: clamp(14px, 3.2vw, 16px);
+    line-height: 1.85;
+    max-width: 34em;
+    margin: 0 auto;
+  }
+  .compare__cards {
     width: var(--wrap);
     margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2px;
-    min-height: 360px;
+    padding: 0 0.25rem;
   }
-  .compare__col {
-    position: relative;
+  .compare-card {
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 18px;
     overflow: hidden;
-    min-height: 260px;
+    display: flex;
+    flex-direction: row;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.18);
   }
-  .compare__col img {
+  .compare-card strong { color: #fff; font-weight: 800; }
+  .compare-card__photo {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    background: #1a3d2e;
+    flex: 0 0 44%;
+  }
+  .compare-card__photo img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    min-height: 260px;
-    filter: saturate(0.9);
-    transition: transform 6s var(--ease);
+    object-position: center 40%;
   }
-  .compare__col:hover img { transform: scale(1.04); }
-  .compare__col::after {
+  .compare-card__photo::after {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(0deg, rgba(26,24,22,0.88) 0%, transparent 50%);
+    background: linear-gradient(
+      180deg,
+      transparent 40%,
+      rgba(47, 79, 66, 0.35) 100%
+    );
   }
-  .compare__caption {
-    position: absolute;
-    bottom: 0; left: 0; right: 0;
-    padding: 2rem;
-    z-index: 1;
+  .compare-card__body {
+    padding: 1.5rem 1.5rem 1.75rem;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-width: 0;
   }
-  .compare__tag {
+  .compare-card__label {
+    display: inline-block;
     font-size: 11px;
-    letter-spacing: 0.15em;
-    opacity: 0.6;
-    margin-bottom: 0.5rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    padding: 0.35rem 0.75rem;
+    border-radius: 999px;
+    margin-bottom: 1rem;
+    align-self: flex-start;
+    background: var(--accent);
+    color: #fff;
   }
-  .compare__caption h3 {
-    font-family: var(--sans);
-    font-size: 1.35rem;
+  .compare-card h3 {
+    font-size: clamp(1.1rem, 2.8vw, 1.35rem);
+    font-weight: 700;
+    margin-bottom: 1rem;
+    line-height: 1.45;
+    color: #d4f0de;
+  }
+  .compare-card__steps {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+    flex: 1;
+  }
+  .compare-card__steps li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.65rem;
+    font-size: 13px;
+    line-height: 1.65;
+    color: rgba(255, 255, 255, 0.88);
+    padding: 0.65rem 0.75rem;
+    background: rgba(77, 155, 115, 0.2);
+    border: 1px solid rgba(109, 184, 146, 0.25);
+    border-radius: 10px;
+  }
+  .compare-card__step-num {
+    flex-shrink: 0;
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 800;
+    line-height: 1;
+  }
+  .compare-card__step-num {
+    background: var(--accent);
+    color: #fff;
+  }
+  .compare-card__summary {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    font-size: 12px;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.55);
+  }
+  .compare-card .compare-card__summary {
+    color: rgba(184, 230, 200, 0.95);
     font-weight: 500;
-    margin-bottom: 0.5rem;
   }
-  .compare__caption p { font-size: 13px; opacity: 0.75; line-height: 1.7; }
-  .compare__col--care {
-    outline: 2px solid var(--accent-light);
-    outline-offset: -2px;
-    z-index: 1;
+  .compare__note {
+    width: var(--wrap);
+    margin: 1.5rem auto 0;
+    padding: 0 0.25rem;
+    text-align: center;
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.45);
+    line-height: 1.6;
   }
-  .compare__col--care .compare__tag { color: #fcd9b6; opacity: 1; }
 
+  @media (max-width: 900px) {
+    .compare-card { flex-direction: column; }
+    .compare-card__photo { flex-basis: auto; }
+  }
   .story {
     padding: clamp(4rem, 8vw, 6rem) 0;
     overflow: hidden;
@@ -984,8 +1069,37 @@
     font-size: 1.5rem;
     color: var(--text);
   }
-  .access-info a { color: var(--accent); text-decoration: none; }
-  .access-info a:hover { text-decoration: underline; }
+  .access-info a:not(.reserve-link) { color: var(--accent); text-decoration: none; }
+  .access-info a:not(.reserve-link):hover { text-decoration: underline; }
+  .reserve-link {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.2rem;
+    margin-top: 0.15rem;
+    padding: 0.9rem 1.25rem;
+    background: #1a5639;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1.35;
+    letter-spacing: 0.04em;
+    text-decoration: none;
+    border-radius: 10px;
+    box-shadow: 0 6px 18px rgba(26, 86, 57, 0.28);
+    transition: background 0.2s, transform 0.2s;
+  }
+  .reserve-link:hover {
+    background: #2a6b4a;
+    text-decoration: none;
+    transform: translateY(-1px);
+  }
+  .reserve-link small {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    opacity: 0.95;
+  }
   .map {
     grid-column: 1 / -1;
     height: 280px;
@@ -1016,8 +1130,33 @@
     font-weight: 500;
     margin-bottom: 0.5rem;
   }
-  .cta p { font-size: 14px; opacity: 0.6; margin-bottom: 1.5rem; }
+  .cta p {
+    font-size: 15px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.92);
+    margin-bottom: 1.5rem;
+    line-height: 1.7;
+  }
   .cta__btns { display: flex; justify-content: center; flex-wrap: wrap; gap: 0.75rem; }
+  .cta .btn--fill {
+    background: #fff;
+    color: #1a5639;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
+  }
+  .cta .btn--fill:hover { background: #f0f7f3; color: #1a5639; }
+  .cta .btn--line {
+    border: 2px solid rgba(255, 255, 255, 0.92);
+    color: #fff;
+    background: rgba(255, 255, 255, 0.08);
+    font-weight: 700;
+  }
+  .cta .btn--line:hover {
+    background: rgba(255, 255, 255, 0.18);
+    color: #fff;
+  }
 
   footer {
     background: #0f0e0d;
@@ -1056,8 +1195,15 @@
     font-weight: 500;
     text-decoration: none;
   }
-  .mobile-bar .call { background: var(--bg-dark); color: #fff; }
-  .mobile-bar .book { background: var(--accent); color: #fff; }
+  .mobile-bar .call { background: var(--bg-dark); color: #fff; font-weight: 700; }
+  .mobile-bar .book {
+    background: #1a5639;
+    color: #fff;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 0.04em;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.12);
+  }
 
   .demo-pill {
     position: fixed;
@@ -1091,7 +1237,7 @@
     .access__inner,
     .feature-split,
     .clinic-strip,
-    .compare__grid,
+    .compare__cards,
     .pillars__grid { grid-template-columns: 1fr; }
     .doctor__inner { justify-items: center; text-align: center; }
     .doctor__career { text-align: left; }
@@ -1101,65 +1247,95 @@
     }
     .gallery__item:first-child { grid-row: auto; height: 260px; }
     .gallery__item { height: 200px; }
+    .nav,
+    .nav.nav--hero,
+    .nav.is-solid,
+    .nav.is-dark,
+    .nav.is-open {
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+    }
     .nav.is-open {
       background: var(--surface);
       box-shadow: 0 1px 0 var(--line);
     }
-    .nav.is-open::before {
-      content: '';
-      position: fixed;
-      inset: var(--header) 0 0 0;
-      left: 0;
-      background: rgba(26, 24, 22, 0.5);
-      z-index: 240;
-      pointer-events: none;
-    }
     .nav.is-open .nav__inner {
       position: relative;
-      z-index: 270;
+      z-index: 302;
     }
     .nav.is-open .nav__logo,
     .nav.is-open .nav__burger {
       color: var(--text);
     }
-    .nav.is-open.is-dark .nav__logo,
-    .nav.is-open.is-dark .nav__burger {
-      color: var(--text);
+    .nav-backdrop {
+      display: block;
+      position: fixed;
+      inset: 0;
+      z-index: 298;
+      background: rgba(26, 24, 22, 0.45);
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: opacity 0.3s var(--ease), visibility 0.3s var(--ease);
+    }
+    .nav.is-open .nav-backdrop {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
     }
     .nav__links {
       position: fixed;
-      inset: var(--header) 0 0 0;
-      z-index: 260;
+      top: var(--header);
+      right: 0;
+      bottom: 0;
+      left: auto;
+      width: min(18.5rem, 88vw);
+      z-index: 300;
       background: var(--surface);
       flex-direction: column;
-      justify-content: center;
+      justify-content: flex-start;
       align-items: stretch;
       gap: 0;
-      padding: 1.5rem 1.25rem 2rem;
+      padding: 1.25rem 1.25rem 2rem;
       transform: translateX(100%);
-      transition: transform 0.35s var(--ease);
-      box-shadow: -8px 0 32px rgba(26, 24, 22, 0.12);
+      visibility: hidden;
+      pointer-events: none;
+      transition: transform 0.35s var(--ease), visibility 0.35s var(--ease);
+      box-shadow: -8px 0 32px rgba(26, 24, 22, 0.15);
       overflow-y: auto;
       -webkit-overflow-scrolling: touch;
     }
-    .nav.is-open .nav__links { transform: translateX(0); }
+    .nav.is-open .nav__links {
+      transform: translateX(0);
+      visibility: visible;
+      pointer-events: auto;
+    }
     .nav__burger { display: block; }
-    .nav__links a {
+    .nav.nav--hero .nav__links a:not(.nav__cta),
+    .nav.is-solid .nav__links a:not(.nav__cta),
+    .nav.is-dark .nav__links a:not(.nav__cta),
+    .nav.is-open .nav__links a:not(.nav__cta),
+    .nav__links a:not(.nav__cta) {
       font-size: 1.05rem;
-      font-weight: 500;
+      font-weight: 600;
       color: var(--text);
       padding: 1rem 0.5rem;
       border-bottom: 1px solid var(--line);
     }
-    .nav.is-open.is-dark .nav__links a {
-      color: var(--text);
-    }
-    .nav__links a:hover { color: var(--accent); }
-    .nav__links .nav__cta {
+    .nav__links a:not(.nav__cta):hover { color: var(--accent); }
+    .nav__links a.nav__cta {
       margin-top: 1rem;
       text-align: center;
       border-bottom: none;
       padding: 1rem 1.25rem;
+      color: #fff;
+      background: #1a5639;
+      font-weight: 700;
+      border-radius: 10px;
+    }
+    .nav__links a.nav__cta:hover {
+      color: #fff;
+      background: #2a6b4a;
     }
     .mobile-bar { display: grid; }
     body { padding-bottom: 64px; }
@@ -1191,10 +1367,10 @@
       クレア歯科
       <small>川越駅 徒歩5分</small>
     </a>
-    <button class="nav__burger" type="button" aria-label="メニュー" aria-expanded="false">
+    <button class="nav__burger" type="button" aria-controls="navMenu" aria-label="メニュー" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
-    <nav class="nav__links">
+    <nav class="nav__links" id="navMenu" aria-label="メインメニュー">
       <a href="#intro">ごあいさつ</a>
       <a href="#services">診療内容</a>
       <a href="#care">こだわり</a>
@@ -1203,6 +1379,7 @@
       <a href="https://ssl.haisha-yoyaku.jp/s6453763/login/serviceAppoint/index?SITE_CODE=epark" class="nav__cta" target="_blank" rel="noopener noreferrer">ネット予約</a>
     </nav>
   </div>
+  <div class="nav-backdrop" id="navBackdrop" aria-hidden="true"></div>
 </header>
 
 <div class="notice" role="note">
@@ -1210,18 +1387,6 @@
     <strong>2026年4月1日より「クレア歯科」</strong>として診療を引き継ぎました（旧・クレア大橋歯科）。これまでのご愛顧に感謝し、変わらぬご支援をお願いいたします。
   </div>
 </div>
-
-<section class="news reveal" id="news" aria-labelledby="news-title">
-  <div class="news__inner">
-    <h2 class="news__title" id="news-title">お知らせ</h2>
-    <ul class="news__list">
-      <li class="news__item">
-        <time class="news__date" datetime="2026-05-27">2026.05.27</time>
-        <p class="news__text">ホームページをリニューアルしました。診療時間・ご予約・アクセス情報を更新しています。</p>
-      </li>
-    </ul>
-  </div>
-</section>
 
 <section class="hero hero--light" id="top">
   <div class="hero__media">
@@ -1274,41 +1439,47 @@
   </div>
 </section>
 
+<section class="news reveal" id="news" aria-labelledby="news-title">
+  <div class="news__inner">
+    <h2 class="news__title" id="news-title">お知らせ</h2>
+    <ul class="news__list">
+      <li class="news__item">
+        <time class="news__date" datetime="2026-05-27">2026.05.27</time>
+        <p class="news__text">ホームページをリニューアルしました。診療時間・ご予約・アクセス情報を更新しています。</p>
+      </li>
+    </ul>
+  </div>
+</section>
+
 <section class="compare reveal" aria-labelledby="compare-title" id="care">
   <div class="compare__head">
-    <h2 id="compare-title">治療の痛みに、<br>真剣に向き合う</h2>
-    <p>一般的な処置と、当院の痛みへの配慮では体験が大きく異なります</p>
+    <h2 id="compare-title">不安を減らす麻酔で、<br>安心して治療へ。</h2>
+    <p>「痛そうで怖い」を、できるだけ「大丈夫」に。クレア歯科は、麻酔の刺激を抑えるために手順と器具にこだわります。</p>
   </div>
-  <div class="compare__grid">
-    <div class="compare__col">
-      <img
-        src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=1200&q=80"
-        alt="一般的な歯科治療のイメージ"
-        width="1200"
-        height="800"
-        loading="lazy"
-      >
-      <div class="compare__caption">
-        <p class="compare__tag">USUAL</p>
-        <h3>いつもの麻酔・注射</h3>
-        <p>針の痛みや注入時の圧が気になる方も。辛いときに声をかけにくい環境もあります。</p>
+  <div class="compare__cards">
+    <article class="compare-card" aria-labelledby="compare-crea-title">
+      <div class="compare-card__photo">
+        <img
+          src="https://images.unsplash.com/photo-1667133295311-e6911e6e22db?auto=format&fit=crop&w=1200&q=80"
+          alt="丁寧にカウンセリングを行う歯科スタッフと患者様の様子"
+          width="1200"
+          height="800"
+          loading="lazy"
+        >
       </div>
-    </div>
-    <div class="compare__col compare__col--care">
-      <img
-        src="https://images.unsplash.com/photo-1609207825181-52d3214556dd?auto=format&fit=crop&w=1200&q=80"
-        alt="丁寧な説明と配慮ある歯科治療"
-        width="1200"
-        height="800"
-        loading="lazy"
-      >
-      <div class="compare__caption">
-        <p class="compare__tag">CREA DENTAL</p>
-        <h3>当院の痛みへの配慮</h3>
-        <p>表面麻酔のうえ電動麻酔器で注入。辛いときはボタンで中断し、様子を伺います。</p>
+      <div class="compare-card__body">
+        <p class="compare-card__label">クレア歯科の工夫</p>
+        <h3 id="compare-crea-title">「大丈夫」を増やす、3つの工夫</h3>
+        <ol class="compare-card__steps">
+          <li><span class="compare-card__step-num">1</span><span><strong>表面麻酔</strong>で、刺す前の感覚をやさしく</span></li>
+          <li><span class="compare-card__step-num">2</span><span><strong>電動麻酔器</strong>で、ゆっくり一定の圧で注入</span></li>
+          <li><span class="compare-card__step-num">3</span><span>不安なときは<strong>合図</strong>で処置を中断し、様子を確認</span></li>
+        </ol>
+        <p class="compare-card__summary">「我慢させない」——それが当院の基本です</p>
       </div>
-    </div>
+    </article>
   </div>
+  <p class="compare__note">※症状・処置内容により麻酔の方法は異なります。詳しくはカウンセリング時にご説明します。</p>
 </section>
 
 <section class="story reveal" id="services">
@@ -1553,7 +1724,10 @@
         </dd>
         <dt>予約</dt>
         <dd>
-          <a href="https://ssl.haisha-yoyaku.jp/s6453763/login/serviceAppoint/index?SITE_CODE=epark" target="_blank" rel="noopener noreferrer">EPARK歯科 ネット予約（24時間）</a>
+          <a href="https://ssl.haisha-yoyaku.jp/s6453763/login/serviceAppoint/index?SITE_CODE=epark" class="reserve-link" target="_blank" rel="noopener noreferrer">
+            ネット予約
+            <small>EPARK歯科・24時間受付</small>
+          </a>
         </dd>
       </dl>
     </div>
@@ -1716,8 +1890,16 @@
   const hero = document.querySelector('.hero');
   const burger = nav.querySelector('.nav__burger');
   const links = nav.querySelector('.nav__links');
+  const backdrop = document.getElementById('navBackdrop');
 
   window.addEventListener('load', () => hero.classList.add('is-loaded'));
+
+  function setMenuOpen(open) {
+    nav.classList.toggle('is-open', open);
+    burger.setAttribute('aria-expanded', String(open));
+    if (backdrop) backdrop.setAttribute('aria-hidden', String(!open));
+    document.body.style.overflow = open ? 'hidden' : '';
+  }
 
   function updateNav() {
     const heroBottom = hero.offsetTop + hero.offsetHeight;
@@ -1732,16 +1914,18 @@
   window.addEventListener('scroll', updateNav, { passive: true });
 
   burger.addEventListener('click', () => {
-    const open = nav.classList.toggle('is-open');
-    burger.setAttribute('aria-expanded', open);
-    document.body.style.overflow = open ? 'hidden' : '';
+    setMenuOpen(!nav.classList.contains('is-open'));
   });
+  if (backdrop) {
+    backdrop.addEventListener('click', () => setMenuOpen(false));
+  }
   links.querySelectorAll('a').forEach((a) => {
-    a.addEventListener('click', () => {
-      nav.classList.remove('is-open');
-      burger.setAttribute('aria-expanded', 'false');
-      document.body.style.overflow = '';
-    });
+    a.addEventListener('click', () => setMenuOpen(false));
+  });
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && nav.classList.contains('is-open')) {
+      setMenuOpen(false);
+    }
   });
 
   const io = new IntersectionObserver((entries) => {
