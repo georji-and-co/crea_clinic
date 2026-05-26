@@ -1,0 +1,1628 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>クレア歯科クリニック｜杉並区阿佐ヶ谷北</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500;600&family=Shippori+Mincho:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cream: #F9F6F0;
+  --cream-dark: #EDE8DF;
+  --gold: #B8965A;
+  --gold-light: #D4AF78;
+  --gold-pale: #F5EDD8;
+  --charcoal: #2C2A25;
+  --charcoal-light: #4A4740;
+  --warm-gray: #8A8680;
+  --warm-gray-light: #C4C0B8;
+  --white: #FDFCFA;
+  --green-open: #2D7A55;
+  --green-open-bg: #EAF4EF;
+  --red-closed: #8B3A3A;
+  --red-closed-bg: #F5EAEA;
+  --amber-break: #8B6914;
+  --amber-break-bg: #FBF3DC;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--cream);
+  color: var(--charcoal);
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 15px;
+  line-height: 1.8;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ─── STATUS BAR ─── */
+.status-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: var(--charcoal);
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+}
+
+.status-badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.status-dot.open { background: #4CAF85; animation: pulse-green 2s infinite; }
+.status-dot.closed { background: #CF6679; }
+.status-dot.break { background: #D4A843; animation: pulse-amber 2s infinite; }
+
+@keyframes pulse-green {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(76,175,133,0.6); }
+  50% { box-shadow: 0 0 0 4px rgba(76,175,133,0); }
+}
+@keyframes pulse-amber {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(212,168,67,0.6); }
+  50% { box-shadow: 0 0 0 4px rgba(212,168,67,0); }
+}
+
+.status-text { color: var(--white); }
+.status-text .label { opacity: 0.6; font-size: 11px; margin-right: 4px; }
+
+.status-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.status-tel {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 15px;
+  font-weight: 400;
+  color: var(--gold-light);
+  text-decoration: none;
+  letter-spacing: 0.08em;
+}
+
+/* ─── NAV ─── */
+.nav {
+  position: fixed;
+  top: 48px;
+  left: 0;
+  right: 0;
+  z-index: 99;
+  background: rgba(249,246,240,0.96);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(184,150,90,0.2);
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+}
+
+.nav-logo {
+  display: flex;
+  flex-direction: column;
+}
+
+.nav-logo-en {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 17px;
+  font-weight: 300;
+  letter-spacing: 0.2em;
+  color: var(--gold);
+  line-height: 1;
+}
+
+.nav-logo-jp {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 9px;
+  font-weight: 300;
+  letter-spacing: 0.25em;
+  color: var(--warm-gray);
+  line-height: 1;
+  margin-top: 3px;
+}
+
+.nav-reserve-btn {
+  background: var(--gold);
+  color: var(--white);
+  text-decoration: none;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  padding: 8px 16px;
+  border-radius: 2px;
+  font-family: 'Noto Sans JP', sans-serif;
+  white-space: nowrap;
+}
+
+/* ─── HERO ─── */
+.hero {
+  margin-top: 108px;
+  min-height: calc(100svh - 108px);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding-bottom: 48px;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 80% 20%, rgba(184,150,90,0.08) 0%, transparent 60%),
+    linear-gradient(160deg, var(--cream) 0%, var(--cream-dark) 100%);
+}
+
+.hero-pattern {
+  position: absolute;
+  inset: 0;
+  opacity: 0.04;
+  background-image: 
+    repeating-linear-gradient(0deg, var(--charcoal) 0px, var(--charcoal) 1px, transparent 1px, transparent 60px),
+    repeating-linear-gradient(90deg, var(--charcoal) 0px, var(--charcoal) 1px, transparent 1px, transparent 60px);
+}
+
+.hero-tooth-art {
+  position: absolute;
+  top: 20px;
+  right: -20px;
+  width: 240px;
+  height: 240px;
+  opacity: 0.06;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  padding: 0 28px;
+}
+
+.hero-tag {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.35em;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.hero-tag::before {
+  content: '';
+  display: block;
+  width: 32px;
+  height: 1px;
+  background: var(--gold);
+}
+
+.hero-heading {
+  font-family: 'Shippori Mincho', 'Noto Serif JP', serif;
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 1.55;
+  color: var(--charcoal);
+  letter-spacing: 0.04em;
+  margin-bottom: 24px;
+}
+
+.hero-heading em {
+  font-style: normal;
+  color: var(--gold);
+}
+
+.hero-sub {
+  font-size: 13px;
+  color: var(--warm-gray);
+  letter-spacing: 0.05em;
+  line-height: 1.9;
+  margin-bottom: 36px;
+  font-family: 'Noto Serif JP', serif;
+  font-weight: 300;
+}
+
+.hero-motto {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px;
+  font-style: italic;
+  font-weight: 300;
+  color: var(--gold);
+  letter-spacing: 0.1em;
+  margin-bottom: 40px;
+  opacity: 0.9;
+}
+
+.hero-cta {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.btn-primary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: var(--charcoal);
+  color: var(--white);
+  text-decoration: none;
+  padding: 16px 28px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  border-radius: 2px;
+  font-family: 'Noto Sans JP', sans-serif;
+  transition: background 0.2s;
+}
+.btn-primary:active { background: var(--gold); }
+
+.btn-secondary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: transparent;
+  color: var(--charcoal);
+  text-decoration: none;
+  padding: 15px 28px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  border: 1px solid rgba(44,42,37,0.3);
+  border-radius: 2px;
+  font-family: 'Noto Sans JP', sans-serif;
+}
+
+.btn-tel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: transparent;
+  color: var(--gold);
+  text-decoration: none;
+  padding: 15px 28px;
+  font-size: 20px;
+  font-weight: 300;
+  letter-spacing: 0.12em;
+  border: 1px solid rgba(184,150,90,0.4);
+  border-radius: 2px;
+  font-family: 'Cormorant Garamond', serif;
+}
+
+/* ─── SECTION COMMON ─── */
+section {
+  padding: 64px 0;
+}
+
+.section-inner {
+  padding: 0 24px;
+}
+
+.section-tag {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.4em;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.section-title {
+  font-family: 'Shippori Mincho', 'Noto Serif JP', serif;
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--charcoal);
+  line-height: 1.55;
+  letter-spacing: 0.04em;
+  margin-bottom: 32px;
+}
+
+.section-divider {
+  width: 40px;
+  height: 1px;
+  background: var(--gold);
+  margin-bottom: 24px;
+}
+
+/* ─── STATUS DETAIL ─── */
+.status-detail-section {
+  background: var(--white);
+  padding: 0;
+}
+
+.status-detail-inner {
+  padding: 28px 24px;
+}
+
+.status-detail-card {
+  border: 1px solid rgba(184,150,90,0.2);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.status-card-header {
+  padding: 16px 20px;
+  border-bottom: 1px solid rgba(184,150,90,0.15);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.status-card-title {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  color: var(--warm-gray);
+}
+
+.status-main {
+  padding: 20px;
+}
+
+.time-slots {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.time-slot {
+  padding: 12px;
+  border-radius: 6px;
+  text-align: center;
+}
+
+.time-slot.active {
+  background: var(--green-open-bg);
+  border: 1px solid rgba(45,122,85,0.2);
+}
+
+.time-slot.inactive {
+  background: var(--cream);
+  border: 1px solid var(--cream-dark);
+}
+
+.time-slot.break-slot {
+  background: var(--amber-break-bg);
+  border: 1px solid rgba(139,105,20,0.2);
+}
+
+.time-slot-label {
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  margin-bottom: 4px;
+}
+
+.time-slot.active .time-slot-label { color: var(--green-open); }
+.time-slot.inactive .time-slot-label { color: var(--warm-gray); }
+.time-slot.break-slot .time-slot-label { color: var(--amber-break); }
+
+.time-slot-time {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+}
+
+.time-slot.active .time-slot-time { color: var(--green-open); }
+.time-slot.inactive .time-slot-time { color: var(--warm-gray-light); }
+.time-slot.break-slot .time-slot-time { color: var(--amber-break); }
+
+.today-schedule {
+  margin-top: 4px;
+  padding-top: 16px;
+  border-top: 1px solid var(--cream-dark);
+}
+
+.today-label {
+  font-size: 11px;
+  color: var(--warm-gray);
+  letter-spacing: 0.08em;
+  margin-bottom: 8px;
+}
+
+.week-row {
+  display: flex;
+  gap: 6px;
+}
+
+.week-day {
+  flex: 1;
+  text-align: center;
+  padding: 8px 4px;
+  border-radius: 4px;
+  font-size: 10px;
+}
+
+.week-day.open { background: var(--cream-dark); color: var(--charcoal); }
+.week-day.closed { background: var(--cream); color: var(--warm-gray-light); }
+.week-day.today { background: var(--gold); color: var(--white); }
+
+.week-day .d { font-weight: 500; margin-bottom: 2px; }
+.week-day .mark { font-size: 9px; }
+
+/* ─── CONCEPT ─── */
+.concept-section { background: var(--charcoal); }
+
+.concept-section .section-tag { color: var(--gold-light); }
+.concept-section .section-title { color: var(--white); }
+
+.concept-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  margin-bottom: 40px;
+}
+
+.concept-card {
+  background: rgba(255,255,255,0.04);
+  border-left: 2px solid var(--gold);
+  padding: 20px 20px 20px 24px;
+  position: relative;
+  overflow: hidden;
+}
+
+.concept-card::after {
+  content: attr(data-en);
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 36px;
+  font-style: italic;
+  font-weight: 300;
+  color: rgba(184,150,90,0.12);
+  letter-spacing: 0.05em;
+  pointer-events: none;
+}
+
+.concept-card-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 11px;
+  color: var(--gold-light);
+  letter-spacing: 0.2em;
+  margin-bottom: 6px;
+}
+
+.concept-card-jp {
+  font-family: 'Shippori Mincho', serif;
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--white);
+  letter-spacing: 0.08em;
+  margin-bottom: 8px;
+}
+
+.concept-card-desc {
+  font-size: 12px;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.8;
+  letter-spacing: 0.03em;
+  max-width: 240px;
+}
+
+.motto-box {
+  border: 1px solid rgba(184,150,90,0.3);
+  padding: 28px 24px;
+  text-align: center;
+}
+
+.motto-en {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px;
+  font-style: italic;
+  font-weight: 300;
+  color: var(--gold-light);
+  letter-spacing: 0.15em;
+  margin-bottom: 10px;
+}
+
+.motto-jp {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 12px;
+  font-weight: 300;
+  color: rgba(255,255,255,0.5);
+  letter-spacing: 0.12em;
+}
+
+/* ─── TREATMENTS ─── */
+.treatments-section { background: var(--cream); }
+
+.treatment-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.treatment-item {
+  background: var(--white);
+  padding: 20px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  border-bottom: 1px solid var(--cream-dark);
+  text-decoration: none;
+  color: inherit;
+}
+
+.treatment-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.treatment-icon {
+  width: 40px;
+  height: 40px;
+  background: var(--gold-pale);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.treatment-icon svg {
+  width: 20px;
+  height: 20px;
+  stroke: var(--gold);
+  fill: none;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.treatment-name {
+  font-family: 'Shippori Mincho', serif;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--charcoal);
+  letter-spacing: 0.05em;
+  margin-bottom: 3px;
+}
+
+.treatment-sub {
+  font-size: 11px;
+  color: var(--warm-gray);
+  letter-spacing: 0.04em;
+}
+
+.treatment-arrow {
+  width: 24px;
+  height: 24px;
+  border: 1px solid rgba(184,150,90,0.3);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.treatment-arrow svg {
+  width: 12px;
+  height: 12px;
+  stroke: var(--gold);
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* ─── FEATURES ─── */
+.features-section { background: var(--gold-pale); }
+
+.feature-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.feature-card {
+  background: var(--white);
+  padding: 20px 16px;
+  border-radius: 4px;
+}
+
+.feature-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 28px;
+  font-weight: 300;
+  color: var(--gold-light);
+  line-height: 1;
+  margin-bottom: 10px;
+  opacity: 0.6;
+}
+
+.feature-title {
+  font-family: 'Shippori Mincho', serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--charcoal);
+  letter-spacing: 0.06em;
+  margin-bottom: 8px;
+  line-height: 1.5;
+}
+
+.feature-desc {
+  font-size: 11px;
+  color: var(--warm-gray);
+  line-height: 1.8;
+  letter-spacing: 0.02em;
+}
+
+/* ─── DOCTOR ─── */
+.doctor-section { background: var(--white); }
+
+.doctor-card {
+  border: 1px solid rgba(184,150,90,0.2);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.doctor-header {
+  background: var(--charcoal);
+  padding: 28px 24px;
+}
+
+.doctor-en {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.4em;
+  color: var(--gold-light);
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  opacity: 0.7;
+}
+
+.doctor-name {
+  font-family: 'Shippori Mincho', serif;
+  font-size: 24px;
+  font-weight: 500;
+  color: var(--white);
+  letter-spacing: 0.15em;
+  margin-bottom: 4px;
+}
+
+.doctor-title {
+  font-size: 11px;
+  color: rgba(255,255,255,0.4);
+  letter-spacing: 0.1em;
+}
+
+.doctor-body {
+  padding: 24px;
+}
+
+.doctor-career {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.career-item {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.career-year {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--gold);
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+  min-width: 42px;
+}
+
+.career-desc {
+  font-size: 12px;
+  color: var(--charcoal-light);
+  line-height: 1.8;
+}
+
+.doctor-message {
+  background: var(--cream);
+  padding: 20px;
+  border-left: 2px solid var(--gold);
+  font-family: 'Noto Serif JP', serif;
+  font-size: 12px;
+  font-weight: 300;
+  color: var(--charcoal-light);
+  line-height: 2;
+  letter-spacing: 0.04em;
+}
+
+/* ─── ACCESS ─── */
+.access-section { background: var(--cream); }
+
+.access-info-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.access-info-card {
+  background: var(--white);
+  padding: 18px 20px;
+  border-radius: 4px;
+}
+
+.access-info-label {
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: var(--gold);
+  font-weight: 500;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  font-family: 'Cormorant Garamond', serif;
+}
+
+.access-info-value {
+  font-size: 14px;
+  color: var(--charcoal);
+  letter-spacing: 0.04em;
+  line-height: 1.7;
+  font-family: 'Noto Serif JP', serif;
+  font-weight: 400;
+}
+
+.access-info-value a {
+  color: var(--charcoal);
+  text-decoration: none;
+}
+
+.schedule-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+.schedule-table th {
+  padding: 8px 4px;
+  text-align: center;
+  font-weight: 400;
+  color: var(--warm-gray);
+  font-size: 11px;
+  letter-spacing: 0.05em;
+}
+
+.schedule-table td {
+  padding: 8px 4px;
+  text-align: center;
+  color: var(--charcoal);
+  border-top: 1px solid var(--cream-dark);
+}
+
+.schedule-table td.open { color: var(--green-open); font-weight: 500; }
+.schedule-table td.closed { color: var(--warm-gray-light); }
+.schedule-table td.holiday { color: var(--red-closed); }
+
+.schedule-time {
+  font-size: 10px;
+  color: var(--warm-gray);
+  letter-spacing: 0.03em;
+  padding: 2px 0 8px;
+}
+
+.map-embed {
+  width: 100%;
+  height: 220px;
+  border: 0;
+  border-radius: 4px;
+  margin-top: 20px;
+  filter: sepia(20%) saturate(0.8);
+}
+
+/* ─── RESERVE ─── */
+.reserve-section {
+  background: var(--charcoal);
+  padding: 48px 0;
+}
+
+.reserve-inner { padding: 0 24px; text-align: center; }
+
+.reserve-tag {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 10px;
+  letter-spacing: 0.4em;
+  color: var(--gold-light);
+  opacity: 0.7;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.reserve-title {
+  font-family: 'Shippori Mincho', serif;
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--white);
+  letter-spacing: 0.06em;
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
+
+.reserve-sub {
+  font-size: 12px;
+  color: rgba(255,255,255,0.4);
+  letter-spacing: 0.05em;
+  margin-bottom: 36px;
+  font-family: 'Noto Serif JP', serif;
+  font-weight: 300;
+}
+
+.reserve-btns {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.reserve-btn-net {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: var(--gold);
+  color: var(--white);
+  text-decoration: none;
+  padding: 18px 28px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  border-radius: 2px;
+  font-family: 'Noto Sans JP', sans-serif;
+}
+
+.reserve-btn-net svg,
+.reserve-btn-tel svg {
+  width: 18px;
+  height: 18px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  flex-shrink: 0;
+}
+
+.reserve-btn-tel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: transparent;
+  color: var(--white);
+  text-decoration: none;
+  padding: 16px 28px;
+  font-size: 20px;
+  font-weight: 300;
+  letter-spacing: 0.15em;
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 2px;
+  font-family: 'Cormorant Garamond', serif;
+}
+
+.reserve-note {
+  margin-top: 20px;
+  font-size: 11px;
+  color: rgba(255,255,255,0.25);
+  letter-spacing: 0.05em;
+  font-family: 'Noto Serif JP', serif;
+  font-weight: 300;
+  line-height: 1.9;
+}
+
+/* ─── FOOTER ─── */
+footer {
+  background: #1C1B18;
+  padding: 40px 24px 32px;
+  text-align: center;
+}
+
+.footer-logo-en {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px;
+  font-weight: 300;
+  letter-spacing: 0.25em;
+  color: var(--gold-light);
+  margin-bottom: 4px;
+}
+
+.footer-logo-jp {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 10px;
+  font-weight: 300;
+  letter-spacing: 0.25em;
+  color: rgba(255,255,255,0.3);
+  margin-bottom: 24px;
+}
+
+.footer-divider {
+  width: 1px;
+  height: 32px;
+  background: rgba(255,255,255,0.1);
+  margin: 0 auto 24px;
+}
+
+.footer-address {
+  font-size: 11px;
+  color: rgba(255,255,255,0.3);
+  letter-spacing: 0.06em;
+  line-height: 2;
+  font-family: 'Noto Serif JP', serif;
+  font-weight: 300;
+  margin-bottom: 24px;
+}
+
+.footer-copy {
+  font-size: 10px;
+  color: rgba(255,255,255,0.15);
+  letter-spacing: 0.1em;
+  font-family: 'Cormorant Garamond', serif;
+}
+
+/* ─── FLOATING CTA ─── */
+.floating-cta {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 90;
+  display: flex;
+  height: 60px;
+  box-shadow: 0 -1px 0 rgba(0,0,0,0.08);
+}
+
+.floating-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-decoration: none;
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+}
+
+.floating-btn svg {
+  width: 18px;
+  height: 18px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.floating-btn-net {
+  background: var(--charcoal);
+  color: var(--white);
+}
+
+.floating-btn-tel {
+  background: var(--gold);
+  color: var(--white);
+}
+
+/* ─── SCROLL ANIMATIONS ─── */
+.fade-up {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* bottom padding for floating CTA */
+body { padding-bottom: 60px; }
+</style>
+</head>
+<body>
+
+<!-- STATUS BAR -->
+<div class="status-bar">
+  <div class="status-badge">
+    <div class="status-dot" id="mainDot"></div>
+    <div class="status-text">
+      <span class="label">現在</span>
+      <span id="mainStatusLabel"></span>
+    </div>
+  </div>
+  <div class="status-right">
+    <a href="tel:03-3338-6159" class="status-tel">03-3338-6159</a>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-logo">
+    <div class="nav-logo-en">CREA DENTAL</div>
+    <div class="nav-logo-jp">クレア歯科クリニック</div>
+  </div>
+  <a href="https://plus.dentamap.jp/hpplus/user/creadental1160/" class="nav-reserve-btn" target="_blank">ネット予約</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-pattern"></div>
+  <svg class="hero-tooth-art" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M100 20C75 20 55 38 50 60C44 85 40 105 38 130C36 155 50 175 65 175C75 175 82 165 90 155C94 150 97 145 100 145C103 145 106 150 110 155C118 165 125 175 135 175C150 175 164 155 162 130C160 105 156 85 150 60C145 38 125 20 100 20Z" stroke="#B8965A" stroke-width="2" fill="none"/>
+    <path d="M70 80C70 80 75 95 100 95C125 95 130 80 130 80" stroke="#B8965A" stroke-width="1.5" fill="none"/>
+  </svg>
+  <div class="hero-content">
+    <div class="hero-tag">CREA DENTAL CLINIC</div>
+    <h1 class="hero-heading">
+      患者様の「今」と<br>
+      <em>「未来」</em>のために<br>
+      ベストを尽くします。
+    </h1>
+    <p class="hero-sub">
+      東京医科歯科大学卒の院長が<br>
+      予防を第一に、丁寧で精密な診療を提供します
+    </p>
+    <div class="hero-motto">Do our best, for your best.</div>
+    <div class="hero-cta">
+      <a href="https://plus.dentamap.jp/hpplus/user/creadental1160/" class="btn-primary" target="_blank">
+        <svg viewBox="0 0 24 24" style="width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        ネット予約（24時間受付）
+      </a>
+      <a href="tel:03-3338-6159" class="btn-tel">
+        <svg viewBox="0 0 24 24" style="width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.01 1.18 2 2 0 012 .01h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        03-3338-6159
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- STATUS DETAIL -->
+<div class="status-detail-section">
+  <div class="status-detail-inner">
+    <div class="status-detail-card fade-up">
+      <div class="status-card-header">
+        <div class="status-card-title">本日の診療状況</div>
+        <div id="todayDateLabel" style="font-size:11px;color:var(--warm-gray);font-family:'Cormorant Garamond',serif;letter-spacing:0.1em;"></div>
+      </div>
+      <div class="status-main">
+        <div class="time-slots">
+          <div class="time-slot" id="slot1">
+            <div class="time-slot-label" id="slot1label">午前診療</div>
+            <div class="time-slot-time">10:00–13:00</div>
+          </div>
+          <div class="time-slot" id="slot2">
+            <div class="time-slot-label" id="slot2label">午後診療</div>
+            <div class="time-slot-time">14:00–19:00</div>
+          </div>
+        </div>
+        <div class="today-schedule">
+          <div class="today-label">今週のスケジュール</div>
+          <div class="week-row">
+            <div class="week-day open" id="wdMon"><div class="d">月</div><div class="mark">◯</div></div>
+            <div class="week-day closed" id="wdTue"><div class="d">火</div><div class="mark">—</div></div>
+            <div class="week-day open" id="wdWed"><div class="d">水</div><div class="mark">◯</div></div>
+            <div class="week-day open" id="wdThu"><div class="d">木</div><div class="mark">◯</div></div>
+            <div class="week-day open" id="wdFri"><div class="d">金</div><div class="mark">◯</div></div>
+            <div class="week-day open" id="wdSat"><div class="d">土</div><div class="mark">◯</div></div>
+            <div class="week-day open" id="wdSun"><div class="d">日</div><div class="mark">◯</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CONCEPT -->
+<section class="concept-section">
+  <div class="section-inner">
+    <div class="section-tag fade-up">Philosophy</div>
+    <div class="section-title fade-up" style="color:var(--white);">
+      クレア歯科の<br>5つのこだわり
+    </div>
+    <div class="concept-cards fade-up">
+      <div class="concept-card" data-en="Peace">
+        <div class="concept-card-num">01</div>
+        <div class="concept-card-jp">安心</div>
+        <div class="concept-card-desc">初めての方も安心してお越しいただける、温かく丁寧な対応を心がけています</div>
+      </div>
+      <div class="concept-card" data-en="Safety">
+        <div class="concept-card-num">02</div>
+        <div class="concept-card-jp">安全</div>
+        <div class="concept-card-desc">感染防止に徹底して取り組み、清潔で安全な環境をご提供します</div>
+      </div>
+      <div class="concept-card" data-en="Care">
+        <div class="concept-card-num">03</div>
+        <div class="concept-card-jp">ていねい</div>
+        <div class="concept-card-desc">お一人おひとりのお口の状態と向き合い、丁寧に説明しながら治療を進めます</div>
+      </div>
+      <div class="concept-card" data-en="Precision">
+        <div class="concept-card-num">04</div>
+        <div class="concept-card-jp">精密</div>
+        <div class="concept-card-desc">高倍率ルーペ・医療用顕微鏡・CT設備で精密な診断と治療を実現します</div>
+      </div>
+      <div class="concept-card" data-en="Trust">
+        <div class="concept-card-num">05</div>
+        <div class="concept-card-jp">信頼</div>
+        <div class="concept-card-desc">かかりつけ医として長期的なお口の健康を、ともに守り続けます</div>
+      </div>
+    </div>
+    <div class="motto-box fade-up">
+      <div class="motto-en">Do our best, for your best.</div>
+      <div class="motto-jp">保険・自費にかかわらず、質の高い医療を。</div>
+    </div>
+  </div>
+</section>
+
+<!-- TREATMENTS -->
+<section class="treatments-section">
+  <div class="section-inner">
+    <div class="section-tag fade-up">Treatment</div>
+    <div class="section-title fade-up">診療メニュー</div>
+
+    <div class="treatment-grid fade-up">
+      <a class="treatment-item" href="#">
+        <div class="treatment-left">
+          <div class="treatment-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 2C8.5 2 6 4.5 6 7c-1 5-2 9-2 12h4l2-4 2 4 2-4 2 4h4c0-3-1-7-2-12C18 4.5 15.5 2 12 2z"/></svg>
+          </div>
+          <div>
+            <div class="treatment-name">一般歯科・保険診療</div>
+            <div class="treatment-sub">虫歯・歯周病・抜歯</div>
+          </div>
+        </div>
+        <div class="treatment-arrow">
+          <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+        </div>
+      </a>
+
+      <a class="treatment-item" href="#">
+        <div class="treatment-left">
+          <div class="treatment-icon">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l2 2"/></svg>
+          </div>
+          <div>
+            <div class="treatment-name">予防・定期健診</div>
+            <div class="treatment-sub">クリーニング・フッ素</div>
+          </div>
+        </div>
+        <div class="treatment-arrow">
+          <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+        </div>
+      </a>
+
+      <a class="treatment-item" href="#">
+        <div class="treatment-left">
+          <div class="treatment-icon">
+            <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+          </div>
+          <div>
+            <div class="treatment-name">審美歯科・ホワイトニング</div>
+            <div class="treatment-sub">セラミック・白い歯</div>
+          </div>
+        </div>
+        <div class="treatment-arrow">
+          <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+        </div>
+      </a>
+
+      <a class="treatment-item" href="#">
+        <div class="treatment-left">
+          <div class="treatment-icon">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+          </div>
+          <div>
+            <div class="treatment-name">インプラント治療</div>
+            <div class="treatment-sub">失った歯を自然に</div>
+          </div>
+        </div>
+        <div class="treatment-arrow">
+          <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+        </div>
+      </a>
+
+      <a class="treatment-item" href="#">
+        <div class="treatment-left">
+          <div class="treatment-icon">
+            <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+          </div>
+          <div>
+            <div class="treatment-name">小児歯科</div>
+            <div class="treatment-sub">お子さんの歯を守る</div>
+          </div>
+        </div>
+        <div class="treatment-arrow">
+          <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+        </div>
+      </a>
+
+      <a class="treatment-item" href="#">
+        <div class="treatment-left">
+          <div class="treatment-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 22C6.48 22 2 17.52 2 12S6.48 2 12 2s10 4.48 10 10-4.48 10-10 10z"/><path d="M8 12l2 2 4-4"/></svg>
+          </div>
+          <div>
+            <div class="treatment-name">矯正歯科</div>
+            <div class="treatment-sub">成人部分矯正対応</div>
+          </div>
+        </div>
+        <div class="treatment-arrow">
+          <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features-section">
+  <div class="section-inner">
+    <div class="section-tag fade-up">Features</div>
+    <div class="section-title fade-up">選ばれる理由</div>
+    <div class="feature-cards fade-up">
+      <div class="feature-card">
+        <div class="feature-num">01</div>
+        <div class="feature-title">高倍率ルーペ使用</div>
+        <div class="feature-desc">6〜10倍のルーペで精密に診査。必要に応じ最高25倍の医療用顕微鏡を使用します</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-num">02</div>
+        <div class="feature-title">CT設備完備</div>
+        <div class="feature-desc">院内CTで三次元的な精密診断が可能。インプラントや根管治療に対応します</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-num">03</div>
+        <div class="feature-title">予約制・完全個別対応</div>
+        <div class="feature-desc">完全予約制でお待たせしません。お一人おひとりに十分な診療時間を確保します</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-num">04</div>
+        <div class="feature-title">土日も診療</div>
+        <div class="feature-desc">月・水・木・金・土・日曜日に診療。お仕事の方も通いやすい環境です</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-num">05</div>
+        <div class="feature-title">東京医科歯科大卒院長</div>
+        <div class="feature-desc">インプラント専門でアメリカ留学経験もある院長が責任を持って診療します</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-num">06</div>
+        <div class="feature-title">各種決済対応</div>
+        <div class="feature-desc">クレジットカード・電子マネー払いに対応。自費診療も安心してご利用いただけます</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DOCTOR -->
+<section class="doctor-section">
+  <div class="section-inner">
+    <div class="section-tag fade-up">Director</div>
+    <div class="section-title fade-up">院長紹介</div>
+    <div class="doctor-card fade-up">
+      <div class="doctor-header">
+        <div class="doctor-en">CLINIC DIRECTOR</div>
+        <div class="doctor-name">平 岡 達</div>
+        <div class="doctor-title">クレア歯科クリニック 院長</div>
+      </div>
+      <div class="doctor-body">
+        <div class="doctor-career">
+          <div class="career-item">
+            <div class="career-year">1995</div>
+            <div class="career-desc">東京医科歯科大学 歯学部 卒業</div>
+          </div>
+          <div class="career-item">
+            <div class="career-year">〜2013</div>
+            <div class="career-desc">同大学、都内青山・恵比寿・自由が丘、中国上海にて勤務。インプラント専門でアメリカへも留学</div>
+          </div>
+          <div class="career-item">
+            <div class="career-year">2013</div>
+            <div class="career-desc">杉並区阿佐ヶ谷北にて「クレア歯科クリニック」開業（石塚歯科医院を継承）</div>
+          </div>
+        </div>
+        <div class="doctor-message">
+          歯科医師としての最大の使命は、治すことではなく予防すること—。そう考え、保険・自費にかかわらず質の高い治療を提供し、患者様自身がお口の健康を管理できるようになることを目指しています。「クレア歯科クリニックに相談すれば大丈夫」と思っていただけるクリニックでありたいと思っています。
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ACCESS -->
+<section class="access-section">
+  <div class="section-inner">
+    <div class="section-tag fade-up">Access</div>
+    <div class="section-title fade-up">アクセス・診療時間</div>
+
+    <div class="access-info-cards fade-up">
+      <div class="access-info-card">
+        <div class="access-info-label">Address</div>
+        <div class="access-info-value">〒166-0001<br>東京都杉並区阿佐谷北1-45-15</div>
+      </div>
+      <div class="access-info-card">
+        <div class="access-info-label">Access</div>
+        <div class="access-info-value">
+          JR阿佐ヶ谷駅より 徒歩7分<br>
+          阿佐ヶ谷北1丁目バス停より 徒歩1分
+        </div>
+      </div>
+      <div class="access-info-card">
+        <div class="access-info-label">Tel</div>
+        <div class="access-info-value"><a href="tel:03-3338-6159">03-3338-6159</a></div>
+      </div>
+      <div class="access-info-card">
+        <div class="access-info-label">Hours</div>
+        <div class="access-info-value" style="padding-bottom:0;">
+          <div class="schedule-time">平日（月・水・木・金）10:00–13:00 / 14:00–19:00</div>
+          <div class="schedule-time">土・日 10:00–13:00 / 14:00–18:00</div>
+          <table class="schedule-table">
+            <thead>
+              <tr>
+                <th></th>
+                <th>月</th>
+                <th>火</th>
+                <th>水</th>
+                <th>木</th>
+                <th>金</th>
+                <th>土</th>
+                <th>日</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="font-size:10px;color:var(--warm-gray);text-align:left;padding-right:4px;">午前</td>
+                <td class="open">◯</td>
+                <td class="closed">—</td>
+                <td class="open">◯</td>
+                <td class="open">◯</td>
+                <td class="open">◯</td>
+                <td class="open">◯</td>
+                <td class="open">▲</td>
+              </tr>
+              <tr>
+                <td style="font-size:10px;color:var(--warm-gray);text-align:left;padding-right:4px;">午後</td>
+                <td class="open">◯</td>
+                <td class="closed">—</td>
+                <td class="open">◯</td>
+                <td class="open">◯</td>
+                <td class="open">◯</td>
+                <td class="open">◯</td>
+                <td class="open">▲</td>
+              </tr>
+            </tbody>
+          </table>
+          <p style="font-size:10px;color:var(--warm-gray);margin-top:10px;line-height:1.8;padding-bottom:8px;">休診日：火曜・祝日 ／ 日曜日は都合により休診の場合があります<br>▲：18:00まで ／ 急患はお電話でご相談ください</p>
+        </div>
+      </div>
+    </div>
+
+    <iframe 
+      class="map-embed"
+      src="https://www.google.com/maps?q=東京都杉並区阿佐谷北1-45-15&output=embed"
+      allowfullscreen
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"
+      title="クレア歯科クリニック マップ"
+    ></iframe>
+  </div>
+</section>
+
+<!-- RESERVE -->
+<section class="reserve-section">
+  <div class="reserve-inner">
+    <div class="reserve-tag fade-up">Reservation</div>
+    <div class="reserve-title fade-up">ご予約・お問い合わせ</div>
+    <div class="reserve-sub fade-up">はじめての方もお気軽にどうぞ<br>【完全予約制】急患はお電話にてご相談ください</div>
+    <div class="reserve-btns fade-up">
+      <a href="https://plus.dentamap.jp/hpplus/user/creadental1160/" class="reserve-btn-net" target="_blank">
+        <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        ネット予約（24時間受付）
+      </a>
+      <a href="tel:03-3338-6159" class="reserve-btn-tel">
+        <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.01 1.18 2 2 0 012 .01h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        03-3338-6159
+      </a>
+      <a href="http://www.crea-dental.com/contact.html" class="btn-secondary" style="color:rgba(255,255,255,0.6);border-color:rgba(255,255,255,0.2);" target="_blank">
+        無料メール相談
+      </a>
+    </div>
+    <div class="reserve-note">
+      月・水・木・金　10:00〜13:00 ／ 14:00〜19:00<br>
+      土・日　10:00〜13:00 ／ 14:00〜18:00<br>
+      休診：火曜・祝日
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo-en">CREA DENTAL CLINIC</div>
+  <div class="footer-logo-jp">クレア歯科クリニック</div>
+  <div class="footer-divider"></div>
+  <div class="footer-address">
+    〒166-0001 東京都杉並区阿佐谷北1-45-15<br>
+    TEL: 03-3338-6159<br>
+    JR阿佐ヶ谷駅より徒歩7分
+  </div>
+  <div class="footer-copy">© 2024 CREA DENTAL CLINIC All Rights Reserved.</div>
+</footer>
+
+<!-- FLOATING CTA -->
+<div class="floating-cta">
+  <a href="https://plus.dentamap.jp/hpplus/user/creadental1160/" class="floating-btn floating-btn-net" target="_blank">
+    <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+    ネット予約
+  </a>
+  <a href="tel:03-3338-6159" class="floating-btn floating-btn-tel">
+    <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.01 1.18 2 2 0 012 .01h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+    電話する
+  </a>
+</div>
+
+<script>
+function getStatus() {
+  const now = new Date();
+  const day = now.getDay(); // 0=Sun,1=Mon,2=Tue...6=Sat
+  const hour = now.getHours();
+  const min = now.getMinutes();
+  const timeNum = hour * 100 + min;
+
+  // Closed days: Tuesday (2) and holidays (simplified)
+  const isClosed = (day === 2);
+
+  if (isClosed) {
+    return { status: 'closed', label: '本日は休診日です', slotStatus: 'closed' };
+  }
+
+  const isSunSat = (day === 0 || day === 6);
+  const pmEnd = isSunSat ? 1800 : 1900;
+
+  if (timeNum < 1000) {
+    return { status: 'before', label: '開院前（10:00〜）', slot1: 'before', slot2: 'before' };
+  } else if (timeNum >= 1000 && timeNum < 1300) {
+    return { status: 'open', label: '診療中（午前）', slot1: 'open', slot2: 'upcoming' };
+  } else if (timeNum >= 1300 && timeNum < 1400) {
+    return { status: 'break', label: '昼休み中（14:00〜再開）', slot1: 'done', slot2: 'upcoming' };
+  } else if (timeNum >= 1400 && timeNum < pmEnd) {
+    return { status: 'open', label: '診療中（午後）', slot1: 'done', slot2: 'open' };
+  } else {
+    return { status: 'closed', label: '本日の診療は終了しました', slot1: 'done', slot2: 'done' };
+  }
+}
+
+function updateStatus() {
+  const s = getStatus();
+  const dot = document.getElementById('mainDot');
+  const label = document.getElementById('mainStatusLabel');
+
+  dot.className = 'status-dot';
+  if (s.status === 'open') {
+    dot.classList.add('open');
+    label.style.color = '#4CAF85';
+  } else if (s.status === 'break') {
+    dot.classList.add('break');
+    label.style.color = '#D4A843';
+  } else {
+    dot.classList.add('closed');
+    label.style.color = '#CF6679';
+  }
+  label.textContent = s.label;
+
+  // Update slots
+  const now = new Date();
+  const day = now.getDay();
+  const isSunSat = (day === 0 || day === 6);
+
+  const slot1 = document.getElementById('slot1');
+  const slot2 = document.getElementById('slot2');
+  const slot1label = document.getElementById('slot1label');
+  const slot2label = document.getElementById('slot2label');
+
+  slot2.querySelector('.time-slot-time').textContent = isSunSat ? '14:00–18:00' : '14:00–19:00';
+
+  function applySlot(el, labelEl, state, name) {
+    el.className = 'time-slot';
+    if (state === 'open') {
+      el.classList.add('active');
+      labelEl.textContent = '✦ ' + name + '（診療中）';
+    } else if (state === 'upcoming') {
+      el.classList.add('break-slot');
+      labelEl.textContent = name + '（開始待ち）';
+    } else if (state === 'done') {
+      el.classList.add('inactive');
+      labelEl.textContent = name + '（終了）';
+    } else if (state === 'before') {
+      el.classList.add('break-slot');
+      labelEl.textContent = name + '（開院前）';
+    } else {
+      el.classList.add('inactive');
+      labelEl.textContent = name + '（休診）';
+    }
+  }
+
+  if (s.status === 'closed' && s.slotStatus === 'closed') {
+    applySlot(slot1, slot1label, 'closed', '午前診療');
+    applySlot(slot2, slot2label, 'closed', '午後診療');
+  } else {
+    applySlot(slot1, slot1label, s.slot1, '午前診療');
+    applySlot(slot2, slot2label, s.slot2, '午後診療');
+  }
+
+  // Date label
+  const dateLabel = document.getElementById('todayDateLabel');
+  const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  dateLabel.textContent = `${now.getMonth()+1}/${now.getDate()} ${days[now.getDay()]}`;
+
+  // Highlight today in week row
+  const dayIds = ['wdSun','wdMon','wdTue','wdWed','wdThu','wdFri','wdSat'];
+  dayIds.forEach((id, i) => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.className = 'week-day';
+    if (i === day) {
+      el.classList.add('today');
+    } else if (i === 2) { // Tuesday closed
+      el.classList.add('closed');
+    } else {
+      el.classList.add('open');
+    }
+  });
+}
+
+updateStatus();
+setInterval(updateStatus, 60000);
+
+// Scroll animations
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.fade-up').forEach((el, i) => {
+  el.style.transitionDelay = (i % 4) * 0.08 + 's';
+  observer.observe(el);
+});
+</script>
+</body>
+</html>
