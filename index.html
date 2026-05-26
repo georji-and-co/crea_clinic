@@ -10,6 +10,17 @@
 <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  .visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
 
   :root {
     --bg: #f4faf7;
@@ -254,6 +265,45 @@
     padding: 0 1.25rem;
   }
   .notice strong { color: var(--accent); font-weight: 600; }
+
+  .news {
+    padding: clamp(2rem, 4vw, 2.75rem) 0;
+    background: var(--surface);
+    border-bottom: 1px solid var(--line);
+  }
+  .news__inner {
+    width: var(--wrap);
+    margin: 0 auto;
+    padding: 0 0.25rem;
+  }
+  .news__title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--text);
+  }
+  .news__list { list-style: none; }
+  .news__item {
+    display: grid;
+    grid-template-columns: 6.5rem 1fr;
+    gap: 0.75rem 1.25rem;
+    align-items: baseline;
+    padding: 0.85rem 0;
+    border-top: 1px solid var(--line);
+    font-size: 14px;
+    line-height: 1.75;
+  }
+  .news__item:last-child { border-bottom: 1px solid var(--line); }
+  .news__date {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: 0.02em;
+  }
+  .news__text { color: var(--text-soft); margin: 0; }
+  @media (max-width: 520px) {
+    .news__item { grid-template-columns: 1fr; gap: 0.35rem; }
+  }
 
   .hero {
     position: relative;
@@ -909,6 +959,15 @@
     color: #fff;
     font-weight: 500;
   }
+  .schedule thead th:first-child,
+  .schedule tbody th[scope="row"] { text-align: left; padding-left: 0.75rem; }
+  .schedule tbody th[scope="row"] small {
+    display: block;
+    font-size: 11px;
+    font-weight: 400;
+    color: var(--text-soft);
+    margin-top: 0.15rem;
+  }
   .schedule .on { color: var(--accent); font-weight: 700; }
   .schedule .off { color: #bbb; }
   .schedule-note { font-size: 12px; color: var(--text-soft); margin-top: 0.75rem; line-height: 1.8; }
@@ -1151,6 +1210,18 @@
     <strong>2026年4月1日より「クレア歯科」</strong>として診療を引き継ぎました（旧・クレア大橋歯科）。これまでのご愛顧に感謝し、変わらぬご支援をお願いいたします。
   </div>
 </div>
+
+<section class="news reveal" id="news" aria-labelledby="news-title">
+  <div class="news__inner">
+    <h2 class="news__title" id="news-title">お知らせ</h2>
+    <ul class="news__list">
+      <li class="news__item">
+        <time class="news__date" datetime="2026-05-27">2026.05.27</time>
+        <p class="news__text">ホームページをリニューアルしました。診療時間・ご予約・アクセス情報を更新しています。</p>
+      </li>
+    </ul>
+  </div>
+</section>
 
 <section class="hero hero--light" id="top">
   <div class="hero__media">
@@ -1430,26 +1501,41 @@
     <h2>診療時間・アクセス</h2>
     <div class="schedule-wrap">
       <table class="schedule">
+        <caption class="visually-hidden">診療受付時間（EPARK掲載情報に準拠）</caption>
         <thead>
           <tr>
-            <th>時間</th>
-            <th>月</th><th>火</th><th>水</th><th>木</th><th>金</th><th>土</th><th>日祝</th>
+            <th scope="col">診療時間</th>
+            <th scope="col">月</th><th scope="col">火</th><th scope="col">水</th>
+            <th scope="col">木</th><th scope="col">金</th><th scope="col">土</th>
+            <th scope="col">日</th><th scope="col">祝</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>午前<small>9:30–13:00</small></td>
-            <td class="on">○</td><td class="on">○</td><td class="on">○</td>
-            <td class="on">○</td><td class="on">○</td><td class="on">○</td><td class="off">—</td>
+            <th scope="row">午前<small>9:30–13:00</small></th>
+            <td class="on" aria-label="月曜 診療">○</td>
+            <td class="on" aria-label="火曜 診療">○</td>
+            <td class="on" aria-label="水曜 診療">○</td>
+            <td class="on" aria-label="木曜 診療">○</td>
+            <td class="on" aria-label="金曜 診療">○</td>
+            <td class="on" aria-label="土曜 診療">○</td>
+            <td class="off" aria-label="日曜 休診">休</td>
+            <td class="off" aria-label="祝日 休診">休</td>
           </tr>
           <tr>
-            <td>午後<small>14:00–18:30</small></td>
-            <td class="on">○</td><td class="on">○</td><td class="on">○</td>
-            <td class="on">○</td><td class="on">○</td><td class="on">○</td><td class="off">—</td>
+            <th scope="row">午後<small>14:00–18:30</small></th>
+            <td class="on" aria-label="月曜 診療">○</td>
+            <td class="on" aria-label="火曜 診療">○</td>
+            <td class="on" aria-label="水曜 診療">○</td>
+            <td class="on" aria-label="木曜 診療">○</td>
+            <td class="on" aria-label="金曜 診療">○</td>
+            <td class="on" aria-label="土曜 診療">○</td>
+            <td class="off" aria-label="日曜 休診">休</td>
+            <td class="off" aria-label="祝日 休診">休</td>
           </tr>
         </tbody>
       </table>
-      <p class="schedule-note">休診：日曜・祝日 ／ 昼休み 13:00–14:00 ／ ※完全予約制</p>
+      <p class="schedule-note">休診：日曜・祝日 ／ 昼休み 13:00–14:00 ／ 完全予約制</p>
     </div>
     <div class="access-info">
       <dl>
@@ -1502,7 +1588,7 @@
 
 <footer>
   <div class="wrap">
-    <span>© クレア歯科（埼玉県川越市）</span>
+    <span>© クレア歯科<br>〒350-1122 埼玉県川越市脇田町8-1</span>
     <div>
       <a href="https://haisha-yoyaku.jp/bun2sdental/detail/index/id/z000004539/" target="_blank" rel="noopener noreferrer">EPARK歯科</a>
       · <span>Web Design Demo — Georji&amp;Co</span>
@@ -1574,7 +1660,7 @@
       return {
         kind: 'closed',
         label: '休診中',
-        detail: '本日は日曜・祝日のため休診です',
+        detail: '本日は日曜・祝日のため休診です（診療受付：月〜土）',
       };
     }
 
