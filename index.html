@@ -544,10 +544,75 @@
     }
   }
 
+  @media (max-width: 900px) {
+    .hero {
+      align-items: stretch;
+      justify-content: flex-start;
+    }
+    .hero__content {
+      max-width: none;
+      min-height: calc(100dvh - var(--header) - 64px);
+      padding: clamp(0.85rem, 3vh, 1.5rem) 1.25rem 2.25rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      text-align: center;
+    }
+    .hero__badge {
+      margin-top: 0;
+      margin-bottom: 0.85rem;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .hero__title {
+      margin-bottom: 1.15rem;
+    }
+    .hero__title-lead {
+      font-size: clamp(0.98rem, 3.8vw, 1.2rem);
+      line-height: 1.55;
+      letter-spacing: 0.02em;
+      max-width: 19em;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .hero__title-clinic {
+      margin-top: 1.35rem;
+      font-size: clamp(1.9rem, 8.8vw, 2.55rem);
+      letter-spacing: 0.08em;
+      line-height: 1.12;
+    }
+    .hero__actions {
+      justify-content: center;
+      margin-top: 1.65rem;
+      margin-bottom: 1.5rem;
+    }
+    .hero__stats {
+      margin-top: auto;
+      padding-top: 1rem;
+    }
+  }
+
   @media (max-width: 520px) {
-    .hero__content { padding-bottom: 2.75rem; max-width: none; }
-    .hero__title-lead { font-size: clamp(1.1rem, 4.2vw, 1.35rem); }
-    .hero__title-clinic { font-size: clamp(2rem, 8.5vw, 2.65rem); letter-spacing: 0.1em; }
+    .hero__content {
+      padding-top: 0.65rem;
+      padding-bottom: 2rem;
+    }
+    .hero__badge {
+      font-size: 11px;
+      padding: 0.5rem 0.9rem;
+      margin-bottom: 0.75rem;
+    }
+    .hero__title-lead {
+      font-size: clamp(0.95rem, 4.1vw, 1.1rem);
+      line-height: 1.5;
+    }
+    .hero__title-clinic {
+      font-size: clamp(1.75rem, 9.2vw, 2.35rem);
+      margin-top: 1.5rem;
+    }
+    .hero__actions {
+      margin-top: 1.85rem;
+    }
     .hero__stats { grid-template-columns: 1fr; gap: 0.5rem; }
     .hero__stat { display: flex; align-items: center; justify-content: space-between; text-align: left; gap: 0.75rem; }
     .hero__stat strong { font-size: 1.05rem; }
@@ -1117,6 +1182,93 @@
     padding: 1rem 1.25rem;
   }
 
+  .sister-clinic {
+    padding: clamp(2.5rem, 6vw, 3.5rem) 0;
+    background: linear-gradient(180deg, var(--bg) 0%, #eef8f1 100%);
+  }
+  .sister-clinic__inner {
+    width: var(--wrap);
+    margin: 0 auto;
+    padding: 0 0.25rem;
+  }
+  .sister-clinic__card {
+    position: relative;
+    padding: clamp(1.75rem, 4vw, 2.5rem) clamp(1.5rem, 4vw, 2.25rem);
+    background: var(--surface);
+    border: 1px solid rgba(77, 155, 115, 0.32);
+    border-radius: 16px;
+    box-shadow:
+      0 16px 40px rgba(77, 155, 115, 0.1),
+      inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    text-align: center;
+    max-width: 40rem;
+    margin: 0 auto;
+  }
+  .sister-clinic__card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 3rem;
+    height: 3px;
+    border-radius: 0 0 4px 4px;
+    background: linear-gradient(90deg, var(--accent-light), var(--accent));
+  }
+  .sister-clinic__eyebrow {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    color: var(--accent);
+    margin-bottom: 0.85rem;
+  }
+  .sister-clinic__title {
+    font-size: clamp(1.15rem, 3vw, 1.45rem);
+    font-weight: 700;
+    line-height: 1.55;
+    color: var(--text);
+    margin-bottom: 0.85rem;
+  }
+  .sister-clinic__text {
+    font-size: clamp(13px, 3.2vw, 15px);
+    line-height: 1.9;
+    color: var(--text-soft);
+    margin-bottom: 1.5rem;
+    max-width: 32em;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .sister-clinic__link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1.5rem;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    color: #1a5639;
+    text-decoration: none;
+    background: rgba(255, 255, 255, 0.85);
+    border: 1.5px solid rgba(26, 86, 57, 0.45);
+    border-radius: 999px;
+    box-shadow: 0 4px 14px rgba(77, 155, 115, 0.12);
+    transition: background 0.2s, color 0.2s, border-color 0.2s, transform 0.2s;
+  }
+  .sister-clinic__link span[aria-hidden] {
+    font-size: 1.1em;
+    transition: transform 0.2s;
+  }
+  .sister-clinic__link:hover {
+    background: #1a5639;
+    color: #fff;
+    border-color: #1a5639;
+    transform: translateY(-1px);
+  }
+  .sister-clinic__link:hover span[aria-hidden] {
+    transform: translateX(3px);
+  }
+
   .cta {
     background: var(--bg-dark);
     color: #fff;
@@ -1404,9 +1556,6 @@
       <span class="hero__title-lead">地域の皆様の笑顔を守る、一番身近な歯医者さん。</span>
       <span class="hero__title-clinic">クレア歯科</span>
     </h1>
-    <p class="hero__lead">
-      丁寧なカウンセリングと痛みに配慮した治療で、小さなお子様からご高齢の方まで安心して通えるクリニックです。
-    </p>
     <div class="hero__actions">
       <a href="#intro" class="btn btn--fill">はじめての方へ</a>
       <a href="#access" class="btn btn--line">診療時間・ご予約</a>
@@ -1746,6 +1895,27 @@
     <p class="schedule-note" style="grid-column:1/-1;margin-top:-1.5rem">
       <a href="https://www.google.com/maps/search/?api=1&query=埼玉県川越市脇田町8-1" target="_blank" rel="noopener noreferrer">Googleマップで大きな地図を見る</a>
     </p>
+  </div>
+</section>
+
+<section class="sister-clinic reveal" aria-labelledby="sister-clinic-title">
+  <div class="sister-clinic__inner">
+    <div class="sister-clinic__card">
+      <p class="sister-clinic__eyebrow">医療法人 井上歯科医院</p>
+      <h2 class="sister-clinic__title" id="sister-clinic-title">高度な精密治療・口腔外科をお求めの方へ</h2>
+      <p class="sister-clinic__text">
+        当グループの本院「川越歯科口腔外科クリニック」では、最新鋭のマイクロスコープを完備した治療を行っています。
+      </p>
+      <a
+        href="https://georji-and-co.github.io/kawagoeshika_koukuugeka_clinic/"
+        class="sister-clinic__link"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        川越歯科口腔外科クリニックのサイトを見る
+        <span aria-hidden="true">→</span>
+      </a>
+    </div>
   </div>
 </section>
 
